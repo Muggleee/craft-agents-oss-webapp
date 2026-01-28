@@ -1,0 +1,30 @@
+{
+  "name": "@craft-agent/webapp",
+  "version": "0.1.0",
+  "description": "Web app for Craft Agents (local browser access)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,green \"bun run src/server.ts\" \"vite\"",
+    "dev:backend": "bun run src/server.ts",
+    "dev:frontend": "vite",
+    "build": "vite build && bun build src/server.ts --outdir=dist --target=bun",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@craft-agent/core": "workspace:*",
+    "@craft-agent/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@tailwindcss/vite": "^4.1.4",
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.0.7"
+  }
+}
